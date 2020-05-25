@@ -8,3 +8,8 @@
 
 -   Using the module pattern—closures and IIFEs.
 -   Private and public data, encapsulation, and separation of concerns.
+
+### Setting up the event listeners
+
+-   Setting up event listeners for keypress events.
+-   Using the event object.
