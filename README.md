@@ -21,3 +21,8 @@
 ### Creating an initialization function
 
 -   How and why.
+
+### Creating income and expense function constructors
+
+-   Choosing function constructors that meet our application's needs.
+-   Setting up a proper data structure for our budget controller.
