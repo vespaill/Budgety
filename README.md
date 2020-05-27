@@ -13,3 +13,7 @@
 
 -   Setting up event listeners for keypress events.
 -   Using the event object.
+
+### Reading input data
+
+-   Reading data from different HTML input fields.

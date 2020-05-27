@@ -1,28 +1,54 @@
 /**
  * BUDGET CONTROLLER
  */
-let budgetController = (function() {
+let budgetController = (function () {
 
     /* Some code */
 
 })();
+
 
 /**
  * UI CONTROLLER
  */
 let UIController = (function () {
+    let DOMstrings = {
+        inputType: '.add__type',
+        inputDesc: '.add__description',
+        inputVal: '.add__value',
+        inputBtn: '.add__btn'
+    }
 
-    /* Some code */
+    return {
+        getInput: function() {
+            return {
+                type: $(DOMstrings['inputType']).val(),     /* 'inc' or 'exp' */
+                desc: $(DOMstrings['inputDesc']).val(),
+                value: $(DOMstrings['inputVal']).val()
+            }
+        },
+
+        getDOMstrings: function() {
+            return DOMstrings;
+        }
+    }
 
 })();
+
 
 /**
  * GLOBAL APP CONTROLLER
  */
-let controller = (function(budgetCtrl, UICtrl) {
+let controller = (function (budgetCtrl, UICtrl) {
 
-    let ctrlAddItem = function() {
+    let DOM = UICtrl.getDOMstrings();
+
+    let ctrlAddItem = function () {
+
         /* 1. Get the field input data */
+        let input = UICtrl.getInput();
+        console.log(input);
+
 
         /* 2. Add the item to the budget controller */
 
@@ -33,9 +59,9 @@ let controller = (function(budgetCtrl, UICtrl) {
         /* 5. Display the budget on the UI */
         console.log('It works.');
 
-    }
+    };
 
-    $('.add__btn').on('click', ctrlAddItem);
+    $(DOM['inputBtn']).on('click', ctrlAddItem);
 
     $(document).keypress(event => {
         if (event.keyCode === 13 || event.which === 13) {
