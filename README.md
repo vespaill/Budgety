@@ -17,3 +17,7 @@
 ### Reading input data
 
 -   Reading data from different HTML input fields.
+
+### Creating an initialization function
+
+-   How and why.
