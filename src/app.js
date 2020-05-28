@@ -60,6 +60,7 @@ let budgetController = (function () {
  */
 let UIController = (function () {
     let DOMstrings = {
+        inputContainer: '.add__container',
         inputType: '.add__type',
         inputDesc: '.add__description',
         inputVal: '.add__value',
@@ -114,6 +115,14 @@ let UIController = (function () {
             ).append($itemDiv);
         },
 
+        clearFields: function() {
+            $(DOMstrings['inputContainer'])
+                .children('input')
+                .val('')
+                .first()
+                .focus();
+        },
+
         getDOMstrings: function () {
             return DOMstrings;
         }
@@ -147,6 +156,7 @@ let controller = (function (budgetCtrl, UICtrl) {
 
         /* 3 Add the item to the UI */
         UICtrl.addListItem(newItem, input.type);
+        UICtrl.clearFields();
 
         /* 4. Calculate the budget */
 

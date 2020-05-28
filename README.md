@@ -37,3 +37,9 @@
 -   Techniques for adding big chunks of HTML into the DOM.
 -   Replacing parts of strings.
 -   Manipulating the DOM using the jQuery's `append` method.
+
+### Clearing out input fields
+
+-   Clearing HTML input fields with jQuery's `val` method.
+-   Using jQuery to select multiple elements.
+-   Using jQuery's `children`, `first` and `focus` methods.
