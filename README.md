@@ -26,3 +26,8 @@
 
 -   Choosing function constructors that meet our application's needs.
 -   Setting up a proper data structure for our budget controller.
+
+### Adding a new item to our budget controller
+
+-   Avoiding conflicts in our data structures.
+-   How and why to pass data from one module to another.
