@@ -31,3 +31,9 @@
 
 -   Avoiding conflicts in our data structures.
 -   How and why to pass data from one module to another.
+
+### Adding a new item to the UI
+
+-   Techniques for adding big chunks of HTML into the DOM.
+-   Replacing parts of strings.
+-   Manipulating the DOM using the jQuery's `append` method.
