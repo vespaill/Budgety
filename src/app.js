@@ -65,8 +65,8 @@ let budgetController = (function () {
                 : -1;
 
             console.log(`
-                Expenses: ${data.totals.exp}
-                Incomes: ${data.totals.inc} (${data.percentage})
+                Incomes: ${data.totals.inc}
+                Expenses: ${data.totals.exp} (${data.percentage})
             `);
         },
 
@@ -96,7 +96,11 @@ let UIController = (function () {
         inputVal: '.add__value',
         inputBtn: '.add__btn',
         incomeContainer: '.income__list',
-        expenseContainer: '.expenses__list'
+        expenseContainer: '.expenses__list',
+        budgetLabel: '.budget__value',
+        incomeLabel: '.budget__income--value',
+        expensesLabel: '.budget__expenses--value',
+        percentageLabel: '.budget__expenses--percentage'
     };
 
     return {
@@ -153,6 +157,18 @@ let UIController = (function () {
                 .focus();
         },
 
+        displayBudget: function(obj) {
+            $(DOMstrings['budgetLabel']).text(obj.budget);
+            $(DOMstrings['incomeLabel']).text(obj.totalInc);
+            $(DOMstrings['expensesLabel']).text(obj.totalExp);
+
+            if(obj.percentage > 0) {
+                $(DOMstrings['percentageLabel']).text(obj.percentage + '%');
+            } else {
+                $(DOMstrings['percentageLabel']).text('---');
+            }
+        },
+
         getDOMstrings: function () {
             return DOMstrings;
         }
@@ -183,7 +199,7 @@ let controller = (function (budgetCtrl, UICtrl) {
         let budget = budgetCtrl.getBudget();
 
         /* 3. Display the budget on the UI */
-        console.log(budget);
+        UICtrl.displayBudget(budget);
     };
 
     let ctrlAddItem = function () {
@@ -210,6 +226,12 @@ let controller = (function (budgetCtrl, UICtrl) {
     return {
         init: function () {
             console.log('Application has started.');
+            UICtrl.displayBudget({
+                budget: 0,
+                totalInc: 0,
+                totalExp: 0,
+                percentage: 0
+            });
             setupEventListeners();
         }
     };

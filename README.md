@@ -53,3 +53,7 @@
 
 -   Creating simple, resuable functions with a single purpose.
 -   Summing up all elements of an array using `forEach`.
+
+### Updating the UI controller to display budget.
+
+-   Practicing DOM manipulation by updating the budget and total values.
