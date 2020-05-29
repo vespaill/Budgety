@@ -129,6 +129,29 @@ let UIController = (function () {
         expensesPercLabel: '.item__percentage'
     };
 
+    let formatNumber = function(num, type) {
+        /*
+            + or - before number
+            exactly 2 decimal places
+            comma separating the thousands
+
+            2310.4567 -> + 2,310.46
+            2000      -> + 2,000.00
+        */
+        let numSplit, int, dec;
+
+        num = Math.abs(num).toFixed(2);
+        numSplit = num.split('.');
+        int = numSplit[0];
+
+        if (int.length > 3)
+            int = int.substr(0, int.length - 3) + ',' + int.substr(int.length - 3, 3);
+
+        dec = numSplit[1];
+
+        return (type === 'exp'? '-' : '+') + ' ' + int + '.' + dec;
+    };
+
     return {
         getInput: function () {
             return {
@@ -157,7 +180,7 @@ let UIController = (function () {
 
             /* Populate with obj's data */
             $descDiv.text(obj.desc);
-            $valDiv.text(obj.value);
+            $valDiv.text(formatNumber(obj.value, type));
 
             let $rightDivs = [$valDiv];
             if (exp) $rightDivs.push($percentageDiv)
@@ -188,9 +211,11 @@ let UIController = (function () {
         },
 
         displayBudget: function(obj) {
-            $(DOMstrings['budgetLabel']).text(obj.budget);
-            $(DOMstrings['incomeLabel']).text(obj.totalInc);
-            $(DOMstrings['expensesLabel']).text(obj.totalExp);
+            let type = obj.budget > 0? 'inc' : 'exp';
+
+            $(DOMstrings['budgetLabel']).text(formatNumber(obj.budget, type));
+            $(DOMstrings['incomeLabel']).text(formatNumber(obj.totalInc), 'inc');
+            $(DOMstrings['expensesLabel']).text(formatNumber(obj.totalExp), 'exp');
 
             if(obj.percentage > 0) {
                 $(DOMstrings['percentageLabel']).text(obj.percentage + '%');

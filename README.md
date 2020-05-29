@@ -80,6 +80,10 @@
 
 -   Making our budget controller interact with the Expense prototype.
 
-### Updating the percentages UI controller
+### Updating the percentages—UI controller
 
 -   Creating our own forEach function for nodeLists instead of arrays.
+
+### Formatting our budget numbers—string manipulations
+
+-   Using different String methods to manipulate strings.
