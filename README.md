@@ -75,3 +75,7 @@
 -   Looping over an array using the `map` method.
 -   Using the `findIndex` method in order to find the index of the first element in an array where a condition is true.
 -   Removing elements from an array using the `splice` method.
+
+### Updating the percentages controller
+
+-   Making our budget controller interact with the Expense prototype.
