@@ -69,3 +69,9 @@
 -   Using event delegation in practice.
 -   Using IDs in HTML to connect the UI with the data model.
 -   Using `parentNode` property for DOM traversal.
+
+### Deleteing an item from our budget controller
+
+-   Looping over an array using the `map` method.
+-   Using the `findIndex` method in order to find the index of the first element in an array where a condition is true.
+-   Removing elements from an array using the `splice` method.

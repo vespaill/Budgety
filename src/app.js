@@ -55,6 +55,11 @@ let budgetController = (function () {
             return newItem;
         },
 
+        deleteItem: function(type, id) {
+            let index = data.items[type].findIndex(item => item.id === id);
+            if (index !== -1 ) data.items[type].splice(index, 1);
+        },
+
         calculateBudget: function() {
             calculateTotal('exp');
             calculateTotal('inc');
@@ -64,10 +69,7 @@ let budgetController = (function () {
                 ? Math.round(data.totals.exp / data.totals.inc * 100)
                 : -1;
 
-            console.log(`
-                Incomes: ${data.totals.inc}
-                Expenses: ${data.totals.exp} (${data.percentage})
-            `);
+            console.log(data.items);
         },
 
         getBudget: function() {
@@ -150,6 +152,10 @@ let UIController = (function () {
             ).append($itemDiv);
         },
 
+        deleteListItem: function(selectorID) {
+            $(`#${selectorID}`).remove();
+        },
+
         clearFields: function() {
             $(DOMstrings['inputContainer'])
                 .children('input')
@@ -228,21 +234,20 @@ let controller = (function (budgetCtrl, UICtrl) {
 
     let ctrlDeleteItem = function(event) {
         let itemID = event.target.parentNode.parentNode.parentNode.parentNode.id;
-        console.log(itemID);
 
         if (itemID) {
             let splitID = itemID.split('-');
             let type = splitID[0];
-            console.log(type);
-            let ID = splitID[1];
-            console.log(ID);
+            let ID = parseInt(splitID[1]);
 
             /* 1. Delete the item from the data structure */
+            budgetCtrl.deleteItem(type, ID);
 
             /* 2. Delete the item from the UI */
-            // $(itemID).remove();
+            UICtrl.deleteListItem(itemID);
 
             /* 3. Update and show the new budget */
+            updateBudget();
         }
     }
 
