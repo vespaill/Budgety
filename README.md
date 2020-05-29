@@ -79,3 +79,7 @@
 ### Updating the percentages controller
 
 -   Making our budget controller interact with the Expense prototype.
+
+### Updating the percentages UI controller
+
+-   Creating our own forEach function for nodeLists instead of arrays.
