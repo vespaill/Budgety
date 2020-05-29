@@ -45,5 +45,11 @@
 -   Using jQuery's `children`, `first` and `focus` methods.
 
 ### Updating the budget controller
+
 -   Converting field inputs to numbers.
 -   Preventing false inputs.
+
+### Updating the budget controller #2
+
+-   Creating simple, resuable functions with a single purpose.
+-   Summing up all elements of an array using `forEach`.

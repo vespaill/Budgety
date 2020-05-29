@@ -14,6 +14,10 @@ let budgetController = (function () {
         this.value = value;
     };
 
+    let calculateTotal = function(type) {
+        data.totals[type] = data.items[type].reduce((acc, cur) => acc + cur.value, 0);
+    }
+
     let data = {
         items: {
             exp: [],
@@ -22,7 +26,9 @@ let budgetController = (function () {
         totals: {
             exp: 0,
             inc: 0
-        }
+        },
+        budget: 0,
+        percentage: -1
     };
 
     return {
@@ -47,6 +53,30 @@ let budgetController = (function () {
             /* Push new item into our data structure and return it */
             data.items[type].push(newItem);
             return newItem;
+        },
+
+        calculateBudget: function() {
+            calculateTotal('exp');
+            calculateTotal('inc');
+            data.budget = data.totals.inc - data.totals.exp;
+
+            data.percentage = data.totals.inc > 0
+                ? Math.round(data.totals.exp / data.totals.inc * 100)
+                : -1;
+
+            console.log(`
+                Expenses: ${data.totals.exp}
+                Incomes: ${data.totals.inc} (${data.percentage})
+            `);
+        },
+
+        getBudget: function() {
+            return {
+                budget: data.budget,
+                totalInc: data.totals.inc,
+                totalExp: data.totals.exp,
+                percentage: data.percentage
+            }
         },
 
         testing: function () {
@@ -147,13 +177,13 @@ let controller = (function (budgetCtrl, UICtrl) {
 
     let updateBudget = function() {
         /* 1. Calculate the budget */
-
+        budgetCtrl.calculateBudget();
 
         /* 2. Return the budget */
-
+        let budget = budgetCtrl.getBudget();
 
         /* 3. Display the budget on the UI */
-
+        console.log(budget);
     };
 
     let ctrlAddItem = function () {
@@ -173,6 +203,7 @@ let controller = (function (budgetCtrl, UICtrl) {
             UICtrl.clearFields();
 
             /* 5. Calculate abd update budget */
+            updateBudget();
         }
     };
 
