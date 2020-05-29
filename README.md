@@ -43,3 +43,7 @@
 -   Clearing HTML input fields with jQuery's `val` method.
 -   Using jQuery to select multiple elements.
 -   Using jQuery's `children`, `first` and `focus` methods.
+
+### Updating the budget controller
+-   Converting field inputs to numbers.
+-   Preventing false inputs.

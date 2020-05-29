@@ -72,9 +72,9 @@ let UIController = (function () {
     return {
         getInput: function () {
             return {
-                type: $(DOMstrings['inputType']).val() /* 'inc' or 'exp' */,
+                type: $(DOMstrings['inputType']).val(), /* 'inc' or 'exp' */
                 desc: $(DOMstrings['inputDesc']).val(),
-                value: $(DOMstrings['inputVal']).val()
+                value: parseFloat($(DOMstrings['inputVal']).val())
             };
         },
 
@@ -145,22 +145,35 @@ let controller = (function (budgetCtrl, UICtrl) {
         });
     };
 
+    let updateBudget = function() {
+        /* 1. Calculate the budget */
+
+
+        /* 2. Return the budget */
+
+
+        /* 3. Display the budget on the UI */
+
+    };
+
     let ctrlAddItem = function () {
         let input, newItem;
 
         /* 1. Get the field input data */
         input = UICtrl.getInput();
 
-        /* 2. Add the item to the budget controller */
-        newItem = budgetCtrl.addItem(input.type, input.desc, input.value);
+        if (input.desc !== '' && !isNaN(input.value) && input.value > 0) {
+            /* 2. Add the item to the budget controller */
+            newItem = budgetCtrl.addItem(input.type, input.desc, input.value);
 
-        /* 3 Add the item to the UI */
-        UICtrl.addListItem(newItem, input.type);
-        UICtrl.clearFields();
+            /* 3 Add the item to the UI */
+            UICtrl.addListItem(newItem, input.type);
 
-        /* 4. Calculate the budget */
+            /* 4. Clear the fields */
+            UICtrl.clearFields();
 
-        /* 5. Display the budget on the UI */
+            /* 5. Calculate abd update budget */
+        }
     };
 
     return {
