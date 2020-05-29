@@ -57,3 +57,15 @@
 ### Updating the UI controller to display budget.
 
 -   Practicing DOM manipulation by updating the budget and total values.
+
+### When to use event delegation
+
+1. We have an element with lots of child elements that we are interested in
+
+2. We want an event hanndler attached to an element that is not yet in the DOM when our page is loaded.
+
+### Setting up the delete Event Listener using Event Delegation
+
+-   Using event delegation in practice.
+-   Using IDs in HTML to connect the UI with the data model.
+-   Using `parentNode` property for DOM traversal.

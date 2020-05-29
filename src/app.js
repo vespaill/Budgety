@@ -100,7 +100,8 @@ let UIController = (function () {
         budgetLabel: '.budget__value',
         incomeLabel: '.budget__income--value',
         expensesLabel: '.budget__expenses--value',
-        percentageLabel: '.budget__expenses--percentage'
+        percentageLabel: '.budget__expenses--percentage',
+        container: '.container'
     };
 
     return {
@@ -119,7 +120,7 @@ let UIController = (function () {
 
             /* Create item div to display obj in. */
             $itemDiv = $('<div>', {
-                id: `${exp ? 'expense' : 'income'}-${obj.id}`,
+                id: `${exp ? 'exp' : 'inc'}-${obj.id}`,
                 class: 'item clearfix'
             });
             $descDiv = $('<div>', { class: 'item__description' });
@@ -189,6 +190,8 @@ let controller = (function (budgetCtrl, UICtrl) {
                 ctrlAddItem();
             }
         });
+
+        $(DOM['container']).on('click', ctrlDeleteItem);
     };
 
     let updateBudget = function() {
@@ -202,7 +205,7 @@ let controller = (function (budgetCtrl, UICtrl) {
         UICtrl.displayBudget(budget);
     };
 
-    let ctrlAddItem = function () {
+    let ctrlAddItem = function() {
         let input, newItem;
 
         /* 1. Get the field input data */
@@ -222,6 +225,26 @@ let controller = (function (budgetCtrl, UICtrl) {
             updateBudget();
         }
     };
+
+    let ctrlDeleteItem = function(event) {
+        let itemID = event.target.parentNode.parentNode.parentNode.parentNode.id;
+        console.log(itemID);
+
+        if (itemID) {
+            let splitID = itemID.split('-');
+            let type = splitID[0];
+            console.log(type);
+            let ID = splitID[1];
+            console.log(ID);
+
+            /* 1. Delete the item from the data structure */
+
+            /* 2. Delete the item from the UI */
+            // $(itemID).remove();
+
+            /* 3. Update and show the new budget */
+        }
+    }
 
     return {
         init: function () {
