@@ -87,3 +87,7 @@
 ### Formatting our budget numbers—string manipulations
 
 -   Using different String methods to manipulate strings.
+
+### Displaying the current month and year
+
+-   Using the Date object constructor.
