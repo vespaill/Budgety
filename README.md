@@ -91,3 +91,7 @@
 ### Displaying the current month and year
 
 -   Using the Date object constructor.
+
+### Finishing touches—improving the UX
+
+-   How and when to use 'change' events.

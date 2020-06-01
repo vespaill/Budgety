@@ -252,6 +252,14 @@ let UIController = (function () {
             $(DOMstrings['dateLabel']).text(`${months[month]} ${year}`);
         },
 
+        changedType: function() {
+            $(
+                DOMstrings['inputType'] + ',' +
+                DOMstrings['inputDesc'] + ',' +
+                DOMstrings['inputVal']
+            ).toggleClass('red-focus');
+        },
+
         getDOMstrings: function () {
             return DOMstrings;
         }
@@ -274,6 +282,8 @@ let controller = (function (budgetCtrl, UICtrl) {
         });
 
         $(DOM['container']).on('click', ctrlDeleteItem);
+
+        $(DOM['inputType']).on('change', UICtrl.changedType);
     };
 
     let updateBudget = function() {
